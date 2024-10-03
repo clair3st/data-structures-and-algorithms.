@@ -8,7 +8,7 @@ Write a function that finds the maximum value in an array.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-  // Solution code here...
+  return Math.max(...arr)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,7 +24,7 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 };
 
 const getCourseKeys = (obj) => {
-  // Solution code here...
+  return Object.keys(obj)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ Write a function named checkValues that takes in an object and a value and retur
 ------------------------------------------------------------------------------------------------ */
 
 const checkValues = (obj, value) => {
-  // Solution code here...
+  return Object.values(obj).includes(value)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ HR has asked you to change the data to make it easier to print so that it looks 
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
-  // Solution code here...
+  return Object.entries(obj).map(e => e[0]+': '+e[1])
 };
 
 
@@ -78,7 +78,7 @@ const characters = [
     house: 'Stark',
   },
   {
-    name: 'Jon',
+    name: 'Jon A.',
     spouse: 'Lysa',
     children: ['Robin'],
     house: 'Arryn',
@@ -107,15 +107,20 @@ const characters = [
     house: 'Baratheon',
   },
   {
-    name: 'Jon',
-    spouse: null,
+    name: 'Jon S.',
     house: 'Snow',
   },
+  
 ];
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  arr.forEach(x => {
+    if(!houses.includes(x.house)){
+
+      houses.push(x.house)  
+    }
+  })
   return houses;
 };
 
@@ -132,7 +137,18 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  let kids = false;
+
+  let i = 0, len = arr.length;
+  while (i < len) {
+      if(arr[i].name == character && Object.keys(arr[i]).includes('children')){
+        return true;
+      }
+      i++
+  }
+  
+  return kids;
+
 
 };
 
@@ -145,8 +161,19 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
-};
+  let kids = false;
+
+  let i = 0, len = arr.length;
+  while (i < len) {
+      if(arr[i].name == character && Object.keys(arr[i]).includes('children')){
+        return true;
+      }
+      i++
+  }
+  
+  return kids;
+
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -155,7 +182,17 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-  // Solution code here...
+    let characters = []
+    let a = [...arr]
+
+    a.forEach(character => {
+      delete character.house
+      characters = characters.concat(Object.values(character))
+    })
+
+    var merged = [].concat(...characters)
+
+    return merged.length
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -169,8 +206,16 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 ------------------------------------------------------------------------------------------------ */
 
 const houseSize = (arr) => {
-  const sizes = [];
-  // Solution code here...
+  const sizes = [], houses = [];
+  
+  arr.forEach(character => {
+    let x = {}
+    x = {
+      house: character.house,
+      members: Object.values(character).length - 1
+    }
+    sizes.push(x)
+  })
   return sizes;
 };
 
@@ -260,11 +305,11 @@ describe('Testing challenge 6', () => {
   });
 
   test('It should return false to characters who do not have children', () => {
-    expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
+    expect(hasChildrenValues(characters, 'Jon S.')).toBeFalsy();
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return true for characters that have children', () => {
     expect(hasChildrenEntries(characters, 'Eddard')).toBeTruthy();
   });
@@ -280,7 +325,7 @@ xdescribe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should return an object for each house containing the name and size', () => {
     expect(houseSize(characters)[1]).toStrictEqual({ house: 'Arryn', members: 3 });
     expect(houseSize(characters).length).toStrictEqual(7);
