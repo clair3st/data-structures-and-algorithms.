@@ -183,16 +183,15 @@ Write a function named totalCharacters that takes in an array and returns the nu
 
 const totalCharacters = (arr) => {
     let characters = []
-    let a = [...arr]
+    let houses = getHouses(arr)
 
-    a.forEach(character => {
-      delete character.house
+    arr.forEach(character => {
       characters = characters.concat(Object.values(character))
     })
 
     var merged = [].concat(...characters)
 
-    return merged.length
+    return merged.length - houses.length
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -238,8 +237,25 @@ For example: [ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, .
 const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
 const houseSurvivors = (arr) => {
+  let houses = getHouses(arr);
+
   const survivors = [];
-  // Solution code here...
+  
+  arr.forEach(character => {
+      let names = [].concat(...Object.values(character))
+      let familyCount = []
+      names.forEach(x => {
+        if(deceasedSpouses.includes(x) || houses.includes(x)){
+
+          } else {
+            familyCount.push(x)
+          }
+      })
+
+      survivors.push({house: character.house, members: familyCount.length})
+    }
+  )
+
   return survivors;
 };
 
@@ -319,7 +335,7 @@ describe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return the number of characters in the array', () => {
     expect(totalCharacters(characters)).toStrictEqual(27);
   });
@@ -332,7 +348,7 @@ describe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should not include any deceased spouses', () => {
     expect(houseSurvivors(characters)[2]).toStrictEqual({ house: 'Lannister', members: 4 });
   });
