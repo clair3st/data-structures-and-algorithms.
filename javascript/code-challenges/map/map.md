@@ -1,10 +1,10 @@
-### array.map()
+# array.map()
 ## Overview
 `array.map( fn(v,i) {} )` Much like `array.forEach()`, the `array.map()` function iterates over an array and runs a call back for each element. The callback receives the value and the index of the array element as a parameter.
 
 The difference is that .map() will always return you a new array of the same length as the original array comprised of your return values
 
-# Squaring a number
+### Squaring a number
 ```
   let numbers = [2,3,4,5];
   
@@ -18,7 +18,7 @@ The difference is that .map() will always return you a new array of the same len
   console.log(squares); // [ 4, 9, 16, 25 ]
 ```
 
-# Changing the data shape
+### Changing the data shape
 ```
   let people = [
     { name: "John", role: "Dad" },
@@ -34,7 +34,7 @@ The difference is that .map() will always return you a new array of the same len
   console.log(folks); // [ "John", "Cathy", "Zach", "Allie" ]
   ```
 
-# If you do nothing…
+### If you do nothing…
 ```
   let numbers = [2,3,4,5];
   

@@ -1,8 +1,8 @@
-### array.reduce()
+# array.reduce()
 ## Overview
 `arr.reduce( (accumulator,value,index) => {...}, initialvalue)``
 
-# Basics
+### Basics
 `.reduce()` iterates over an array and returns the last version of the “accumulator” … in each iteration, based on the value and/or idx of the current element in the array, you have the opportunity to modify and return the accumulator. After the last iteration of the array, that accumulator value is returned to the caller. initialvalue represents the value of the accumulator in the first iteration.
 
 **Add up all the numbers in an array** In this example, the accumulator starts out as 0 (the initial value) and for each iteration, we simply add onto it, and then return it. That return value gets fed into the next iteration so that you can continually operate on it and return the final value.

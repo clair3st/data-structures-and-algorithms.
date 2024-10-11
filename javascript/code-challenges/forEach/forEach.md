@@ -1,4 +1,4 @@
-### Array.forEach
+# Array.forEach
 ## Overview
 `Array.forEach` allows you to iterate through an array. Where a normal for loop is “iterative”, forEach is more declarative or functional in nature.
 

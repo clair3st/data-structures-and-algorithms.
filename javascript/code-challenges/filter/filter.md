@@ -1,10 +1,10 @@
-### array.filter()
+# array.filter()
 ## Overview
 Similar to `array.map()`, the `array.filter()` function iterates over an array and runs a callback for each element. The callback receives the value and the index of the array element as a parameter.
 
 `.filter()` will always return you a new array, comprised of elements from the original array that match your criteria – which elements in the array match the filter condition?
 
-# Even Numbers
+### Even Numbers
 ```
   let numbers = [2,3,4,5];
   
@@ -18,7 +18,7 @@ Similar to `array.map()`, the `array.filter()` function iterates over an array a
   console.log(evens); // [ 2, 4, 6 ]
 ```
 
-# Object Values
+### Object Values
 ```
   let people = [
     { name: 'John', role: 'Dad' },

@@ -1,10 +1,10 @@
-### Object/Array Deconstruction
+# Object/Array Deconstruction
 ## Overview
 Using the `...` notation is a concise, flexible and expressive way to manage objects and arrays.
 
 This allows you to unpack values from arrays or properties from objects, into distinct variables
 
-# Basic variable assignment
+### Basic variable assignment
 
 ```
 onst obj = { a: 1, b: 2 };

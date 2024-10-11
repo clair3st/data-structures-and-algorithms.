@@ -1,4 +1,4 @@
-### Object Iteration
+# Object Iteration
 ## Overview
 Just like with arrays, you’ll often want to iterate over objects. But unlike arrays, objects have more than just one moving part … and very often, they go deeper than just a single property.
 ```
